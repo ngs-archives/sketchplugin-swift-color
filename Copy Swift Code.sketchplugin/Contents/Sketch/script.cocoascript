@@ -1,0 +1,47 @@
+var copyUIColor = function(context) {
+  copyText(generateCode('UIColor', context));
+}
+
+var copyNSColor = function(context) {
+  copyText(generateCode('NSColor', context));
+}
+
+function generateCode(initializer, context) {
+  var selection = context.selection
+    , res = []
+    , varNames = {}
+    ;
+  for (var i = 0; i < selection.count(); i++) {
+    var layer = selection[i]
+    , fills = layer.style().fills().array()
+    , varName = layer.name().replace(/[^a-z0-9]/ig, '')
+    ;
+    varNames[varName] = varNames[varName] || 0;
+    res.push('/* ' + layer.name() + ' */');
+    for (var j = 0; j < fills.count(); j++) {
+      var fill = fills[j];
+      if(fill.fillType() === 0) {
+        varNames[varName]++;
+        var varCount = varNames[varName]
+          , color = fill.color()
+          ;
+        res.push(
+          'let ' + varName +
+          (varCount > 1 ? varCount : '') +
+          ' = ' + initializer + '(' +
+          'red: ' + color.red()  + ', ' +
+          'green: ' + color.green()  + ', ' +
+          'blue: ' + color.green()  + ', ' +
+          'alpha: ' + color.alpha()  + ')'
+        );
+      }
+    }
+  }
+  return res.join('\n');
+}
+
+function copyText(text) {
+  var pasteBoard = [NSPasteboard generalPasteboard];
+  [pasteBoard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
+  [pasteBoard setString:text forType:NSPasteboardTypeString];
+}

@@ -1,0 +1,32 @@
+{
+  "author": "Atsushi Nagase",
+  "commands" : [
+    {
+      "script" : "script.cocoascript",
+      "handler" : "copyUIColor",
+      "shortcut" : "",
+      "name" : "Copy as UIColor",
+      "identifier" : "copy-ui-color"
+    },
+    {
+      "script" : "script.cocoascript",
+      "handler" : "copyNSColor",
+      "shortcut" : "",
+      "name" : "Copy as NSColor",
+      "identifier" : "copy-ns-color"
+    }
+  ],
+  "menu" : {
+    "items" : [
+      "copy-ui-color",
+      "copy-ns-color"
+    ],
+    "title" : "Copy Swift Code"
+  },
+  "identifier" : "io.ngs.sketchplugin.swift-color",
+  "version" : "1.0",
+  "description": "Copy fill color as Swift code",
+  "homepage": "http://github.com/ngs/sketchplugin-swift-color",
+  "authorEmail" : "a@ngs.io",
+  "name" : "Copy Swift Code"
+}
