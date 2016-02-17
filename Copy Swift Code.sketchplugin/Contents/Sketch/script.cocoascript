@@ -31,7 +31,7 @@ function generateCode(initializer, context) {
           ' = ' + initializer + '(' +
           'red: ' + color.red()  + ', ' +
           'green: ' + color.green()  + ', ' +
-          'blue: ' + color.green()  + ', ' +
+          'blue: ' + color.blue()  + ', ' +
           'alpha: ' + color.alpha()  + ')'
         );
       }
