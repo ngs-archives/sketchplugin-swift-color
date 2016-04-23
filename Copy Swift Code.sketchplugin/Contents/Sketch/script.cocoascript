@@ -29,9 +29,9 @@ function generateCode(initializer, context) {
           'let ' + varName +
           (varCount > 1 ? varCount : '') +
           ' = ' + initializer + '(' +
-          'red: ' + color.red()  + ', ' +
-          'green: ' + color.green()  + ', ' +
-          'blue: ' + color.blue()  + ', ' +
+          'red: ' +  Math.round((color.red())*255) + '/255'  + ', ' +
+          'green: ' + Math.round((color.green())*255) + '/255'  + ', ' +
+          'blue: ' + Math.round((color.blue())*255) + '/255'  + ', ' +
           'alpha: ' + color.alpha()  + ')'
         );
       }
