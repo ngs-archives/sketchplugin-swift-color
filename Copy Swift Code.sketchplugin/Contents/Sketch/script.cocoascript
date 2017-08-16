@@ -13,7 +13,7 @@ function generateCode(initializer, context) {
     ;
   for (var i = 0; i < selection.count(); i++) {
     var layer = selection[i]
-    , fills = layer.style().fills().array()
+    , fills = layer.style().fills()
     , varName = layer.name().replace(/[^a-z0-9]/ig, '')
     ;
     varNames[varName] = varNames[varName] || 0;
